@@ -1,0 +1,17 @@
+C:\Users\Besitzer\source\repos\DelarService\DS.BL\bin\Debug\DS.BL.dll.config
+C:\Users\Besitzer\source\repos\DelarService\DS.BL\bin\Debug\DS.BL.dll
+C:\Users\Besitzer\source\repos\DelarService\DS.BL\bin\Debug\DS.BL.pdb
+C:\Users\Besitzer\source\repos\DelarService\DS.BL\bin\Debug\DA.IBL.dll
+C:\Users\Besitzer\source\repos\DelarService\DS.BL\bin\Debug\DS.DATA.dll
+C:\Users\Besitzer\source\repos\DelarService\DS.BL\bin\Debug\EntityFramework.dll
+C:\Users\Besitzer\source\repos\DelarService\DS.BL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Besitzer\source\repos\DelarService\DS.BL\bin\Debug\DA.IBL.pdb
+C:\Users\Besitzer\source\repos\DelarService\DS.BL\bin\Debug\DS.DATA.pdb
+C:\Users\Besitzer\source\repos\DelarService\DS.BL\bin\Debug\DS.DATA.dll.config
+C:\Users\Besitzer\source\repos\DelarService\DS.BL\bin\Debug\EntityFramework.xml
+C:\Users\Besitzer\source\repos\DelarService\DS.BL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Besitzer\source\repos\DelarService\DS.BL\obj\Debug\DS.BL.csprojAssemblyReference.cache
+C:\Users\Besitzer\source\repos\DelarService\DS.BL\obj\Debug\DS.BL.csproj.CoreCompileInputs.cache
+C:\Users\Besitzer\source\repos\DelarService\DS.BL\obj\Debug\DS.BL.csproj.CopyComplete
+C:\Users\Besitzer\source\repos\DelarService\DS.BL\obj\Debug\DS.BL.dll
+C:\Users\Besitzer\source\repos\DelarService\DS.BL\obj\Debug\DS.BL.pdb

@@ -1,0 +1,4 @@
+C:\Users\Besitzer\source\repos\DelarService\DS.BL\obj\Debug\DA.BL.csprojAssemblyReference.cache
+C:\Users\Besitzer\source\repos\DelarService\DS.BL\obj\Debug\DA.BL.csproj.CoreCompileInputs.cache
+C:\Users\Besitzer\source\repos\DelarService\DS.BL\obj\Debug\DS.BL.dll
+C:\Users\Besitzer\source\repos\DelarService\DS.BL\obj\Debug\DS.BL.pdb

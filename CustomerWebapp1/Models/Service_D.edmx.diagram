@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4a287c2d7f18441d8a8a53635fefc154" Name="Diagram1">
+        <EntityTypeShape EntityType="ServiceModel.appoinment" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiceModel.Customer" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiceModel.Dealer" Width="1.5" PointX="1.5" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiceModel.Mechanic" Width="1.5" PointX="0.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiceModel.Service_Booked" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiceModel.Service1" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiceModel.ServiceProvider" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiceModel.Vehicle" Width="1.5" PointX="0.75" PointY="20.625" IsExpanded="true" />
+        <AssociationConnector Association="ServiceModel.FK__appoinmen__Custo__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiceModel.FK__appoinmen__Mecha__6E01572D" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiceModel.FK__appoinmen__Servi__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiceModel.FK__appoinmen__Vehic__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiceModel.FK__Service_B__appoi__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiceModel.FK__ServicePr__Appoi__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiceModel.FK__Customer__Dealer__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiceModel.FK__Vehicle__Custome__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiceModel.FK__Vehicle__Mechani__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiceModel.FK__Service_B__Servi__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiceModel.FK__ServicePr__Servi__59FA5E80" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

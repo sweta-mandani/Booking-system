@@ -1,0 +1,5 @@
+C:\Users\Besitzer\source\repos\DelarService\DA.MODEL\bin\Debug\DA.MODEL.dll
+C:\Users\Besitzer\source\repos\DelarService\DA.MODEL\bin\Debug\DA.MODEL.pdb
+C:\Users\Besitzer\source\repos\DelarService\DA.MODEL\obj\Debug\DA.MODEL.csproj.CoreCompileInputs.cache
+C:\Users\Besitzer\source\repos\DelarService\DA.MODEL\obj\Debug\DA.MODEL.dll
+C:\Users\Besitzer\source\repos\DelarService\DA.MODEL\obj\Debug\DA.MODEL.pdb

@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ServiceModelStoreContainer" CdmEntityContainer="ServiceEntities2">
+    <EntitySetMapping Name="appoinments">
+      <EntityTypeMapping TypeName="ServiceModel.appoinment">
+        <MappingFragment StoreEntitySet="appoinment">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="Customercontact" ColumnName="Customercontact" />
+          <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+          <ScalarProperty Name="VehicleId" ColumnName="VehicleId" />
+          <ScalarProperty Name="MechanicId" ColumnName="MechanicId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="ServiceModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="DealerId" ColumnName="DealerId" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dealers">
+      <EntityTypeMapping TypeName="ServiceModel.Dealer">
+        <MappingFragment StoreEntitySet="Dealer">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Dealer_Name" ColumnName="Dealer Name" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mechanics">
+      <EntityTypeMapping TypeName="ServiceModel.Mechanic">
+        <MappingFragment StoreEntitySet="Mechanic">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MechanicName" ColumnName="MechanicName" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Service_Booked">
+      <EntityTypeMapping TypeName="ServiceModel.Service_Booked">
+        <MappingFragment StoreEntitySet="Service_Booked">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="appoinmentId" ColumnName="appoinmentId" />
+          <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Service1">
+      <EntityTypeMapping TypeName="ServiceModel.Service1">
+        <MappingFragment StoreEntitySet="Service1">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceProviders">
+      <EntityTypeMapping TypeName="ServiceModel.ServiceProvider">
+        <MappingFragment StoreEntitySet="ServiceProvider">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="AppoinmentId" ColumnName="AppoinmentId" />
+          <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vehicles">
+      <EntityTypeMapping TypeName="ServiceModel.Vehicle">
+        <MappingFragment StoreEntitySet="Vehicle">
+          <ScalarProperty Name="License_Plate" ColumnName="License Plate" />
+          <ScalarProperty Name="Chassis_No" ColumnName="Chassis No" />
+          <ScalarProperty Name="OwerName" ColumnName="OwerName" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="MechanicId" ColumnName="MechanicId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,12 @@
+C:\Users\Besitzer\source\repos\DelarService\DA.IBL\bin\Debug\DA.IBL.dll
+C:\Users\Besitzer\source\repos\DelarService\DA.IBL\bin\Debug\DA.IBL.pdb
+C:\Users\Besitzer\source\repos\DelarService\DA.IBL\obj\Debug\DA.IBL.csprojAssemblyReference.cache
+C:\Users\Besitzer\source\repos\DelarService\DA.IBL\obj\Debug\DA.IBL.csproj.CoreCompileInputs.cache
+C:\Users\Besitzer\source\repos\DelarService\DA.IBL\obj\Debug\DA.IBL.csproj.CopyComplete
+C:\Users\Besitzer\source\repos\DelarService\DA.IBL\obj\Debug\DA.IBL.dll
+C:\Users\Besitzer\source\repos\DelarService\DA.IBL\obj\Debug\DA.IBL.pdb
+C:\Users\Besitzer\source\repos\DelarService\DA.IBL\bin\Debug\DS.DATA.dll
+C:\Users\Besitzer\source\repos\DelarService\DA.IBL\bin\Debug\EntityFramework.dll
+C:\Users\Besitzer\source\repos\DelarService\DA.IBL\bin\Debug\DS.DATA.pdb
+C:\Users\Besitzer\source\repos\DelarService\DA.IBL\bin\Debug\DS.DATA.dll.config
+C:\Users\Besitzer\source\repos\DelarService\DA.IBL\bin\Debug\EntityFramework.xml

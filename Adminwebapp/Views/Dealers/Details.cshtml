@@ -1,0 +1,66 @@
+﻿@model Adminwebapp.Models.Dealer
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Dealer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Dealer_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dealer_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Zipcode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Zipcode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contact)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contact)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

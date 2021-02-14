@@ -1,0 +1,12 @@
+C:\Users\Besitzer\source\repos\DelarService\DS.DATA\bin\Debug\DS.DATA.dll.config
+C:\Users\Besitzer\source\repos\DelarService\DS.DATA\bin\Debug\DS.DATA.dll
+C:\Users\Besitzer\source\repos\DelarService\DS.DATA\bin\Debug\DS.DATA.pdb
+C:\Users\Besitzer\source\repos\DelarService\DS.DATA\bin\Debug\EntityFramework.dll
+C:\Users\Besitzer\source\repos\DelarService\DS.DATA\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Besitzer\source\repos\DelarService\DS.DATA\bin\Debug\EntityFramework.xml
+C:\Users\Besitzer\source\repos\DelarService\DS.DATA\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Besitzer\source\repos\DelarService\DS.DATA\obj\Debug\DS.DATA.csproj.CoreCompileInputs.cache
+C:\Users\Besitzer\source\repos\DelarService\DS.DATA\obj\Debug\DS.DATA.csproj.CopyComplete
+C:\Users\Besitzer\source\repos\DelarService\DS.DATA\obj\Debug\DS.DATA.dll
+C:\Users\Besitzer\source\repos\DelarService\DS.DATA\obj\Debug\DS.DATA.pdb
+C:\Users\Besitzer\source\repos\DelarService\DS.DATA\obj\Debug\DS.DATA.csprojAssemblyReference.cache

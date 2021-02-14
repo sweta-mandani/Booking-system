@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ServiceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Address1" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address2" Type="nvarchar" MaxLength="50" />
+    <Property Name="City" Type="varchar" MaxLength="15" />
+    <Property Name="State" Type="varchar" MaxLength="15" />
+    <Property Name="ZipCode" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="EmailId" Type="nvarchar" MaxLength="50" />
+    <Property Name="MobileNo" Type="nvarchar" MaxLength="13" Nullable="false" />
+    <Property Name="DealerId" Type="int" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Vehicle">
+    <Key>
+      <PropertyRef Name="License Plate" />
+    </Key>
+    <Property Name="License Plate" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Chassis No" Type="nvarchar" MaxLength="17" Nullable="false" />
+    <Property Name="OwerName" Type="varchar" MaxLength="15" />
+    <Property Name="CustomerId" Type="int" />
+    <Property Name="MechanicId" Type="int" />
+  </EntityType>
+  <Association Name="FK__Vehicle__Custome__3F466844">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Vehicle">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ServiceModelStoreContainer">
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vehicle" EntityType="Self.Vehicle" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Vehicle__Custome__3F466844" Association="Self.FK__Vehicle__Custome__3F466844">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Vehicle" EntitySet="Vehicle" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

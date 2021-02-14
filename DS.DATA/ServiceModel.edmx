@@ -1,0 +1,702 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ServiceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="appoinment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="Customercontact" Type="varchar" MaxLength="13" />
+          <Property Name="ServiceId" Type="int" />
+          <Property Name="VehicleId" Type="nvarchar" MaxLength="15" />
+          <Property Name="MechanicId" Type="int" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="varchar" MaxLength="15" />
+          <Property Name="State" Type="varchar" MaxLength="15" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="EmailId" Type="nvarchar" MaxLength="50" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="13" Nullable="false" />
+          <Property Name="DealerId" Type="int" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Dealer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Dealer Name" Type="varchar" MaxLength="20" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Zipcode" Type="varchar" MaxLength="10" />
+          <Property Name="EmailId" Type="nvarchar" MaxLength="30" />
+          <Property Name="Contact" Type="nvarchar" MaxLength="13" />
+        </EntityType>
+        <EntityType Name="Mechanic">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="MechanicName" Type="varchar" MaxLength="15" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="13" />
+          <Property Name="EmailId" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Service_Booked">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="appoinmentId" Type="int" />
+          <Property Name="ServiceId" Type="int" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Service1">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServiceName" Type="varchar" MaxLength="50" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Time" Type="datetime" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="ServiceProvider">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AppoinmentId" Type="int" />
+          <Property Name="ServiceId" Type="int" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Vehicle">
+          <Key>
+            <PropertyRef Name="License Plate" />
+          </Key>
+          <Property Name="License Plate" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Chassis No" Type="nvarchar" MaxLength="17" Nullable="false" />
+          <Property Name="OwerName" Type="varchar" MaxLength="15" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="MechanicId" Type="int" />
+        </EntityType>
+        <Association Name="FK__appoinmen__Custo__4E88ABD4">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="appoinment" Type="Self.appoinment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="appoinment">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__appoinmen__Mecha__6E01572D">
+          <End Role="Mechanic" Type="Self.Mechanic" Multiplicity="0..1" />
+          <End Role="appoinment" Type="Self.appoinment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mechanic">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="appoinment">
+              <PropertyRef Name="MechanicId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__appoinmen__Servi__5DCAEF64">
+          <End Role="Service1" Type="Self.Service1" Multiplicity="0..1" />
+          <End Role="appoinment" Type="Self.appoinment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service1">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="appoinment">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__appoinmen__Vehic__5FB337D6">
+          <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="0..1" />
+          <End Role="appoinment" Type="Self.appoinment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle">
+              <PropertyRef Name="License Plate" />
+            </Principal>
+            <Dependent Role="appoinment">
+              <PropertyRef Name="VehicleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Customer__Dealer__3E52440B">
+          <End Role="Dealer" Type="Self.Dealer" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dealer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="DealerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Service_B__appoi__5165187F">
+          <End Role="appoinment" Type="Self.appoinment" Multiplicity="0..1" />
+          <End Role="Service_Booked" Type="Self.Service_Booked" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="appoinment">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Service_Booked">
+              <PropertyRef Name="appoinmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Service_B__Servi__5AEE82B9">
+          <End Role="Service1" Type="Self.Service1" Multiplicity="0..1" />
+          <End Role="Service_Booked" Type="Self.Service_Booked" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service1">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Service_Booked">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ServicePr__Appoi__5BE2A6F2">
+          <End Role="appoinment" Type="Self.appoinment" Multiplicity="0..1" />
+          <End Role="ServiceProvider" Type="Self.ServiceProvider" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="appoinment">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ServiceProvider">
+              <PropertyRef Name="AppoinmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ServicePr__Servi__59FA5E80">
+          <End Role="Service1" Type="Self.Service1" Multiplicity="0..1" />
+          <End Role="ServiceProvider" Type="Self.ServiceProvider" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service1">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ServiceProvider">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehicle__Custome__3F466844">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vehicle">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehicle__Mechani__403A8C7D">
+          <End Role="Mechanic" Type="Self.Mechanic" Multiplicity="0..1" />
+          <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mechanic">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vehicle">
+              <PropertyRef Name="MechanicId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ServiceModelStoreContainer">
+          <EntitySet Name="appoinment" EntityType="Self.appoinment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dealer" EntityType="Self.Dealer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mechanic" EntityType="Self.Mechanic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Service_Booked" EntityType="Self.Service_Booked" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Service1" EntityType="Self.Service1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceProvider" EntityType="Self.ServiceProvider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vehicle" EntityType="Self.Vehicle" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__appoinmen__Custo__4E88ABD4" Association="Self.FK__appoinmen__Custo__4E88ABD4">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="appoinment" EntitySet="appoinment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__appoinmen__Mecha__6E01572D" Association="Self.FK__appoinmen__Mecha__6E01572D">
+            <End Role="Mechanic" EntitySet="Mechanic" />
+            <End Role="appoinment" EntitySet="appoinment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__appoinmen__Servi__5DCAEF64" Association="Self.FK__appoinmen__Servi__5DCAEF64">
+            <End Role="Service1" EntitySet="Service1" />
+            <End Role="appoinment" EntitySet="appoinment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__appoinmen__Vehic__5FB337D6" Association="Self.FK__appoinmen__Vehic__5FB337D6">
+            <End Role="Vehicle" EntitySet="Vehicle" />
+            <End Role="appoinment" EntitySet="appoinment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Customer__Dealer__3E52440B" Association="Self.FK__Customer__Dealer__3E52440B">
+            <End Role="Dealer" EntitySet="Dealer" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Service_B__appoi__5165187F" Association="Self.FK__Service_B__appoi__5165187F">
+            <End Role="appoinment" EntitySet="appoinment" />
+            <End Role="Service_Booked" EntitySet="Service_Booked" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Service_B__Servi__5AEE82B9" Association="Self.FK__Service_B__Servi__5AEE82B9">
+            <End Role="Service1" EntitySet="Service1" />
+            <End Role="Service_Booked" EntitySet="Service_Booked" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ServicePr__Appoi__5BE2A6F2" Association="Self.FK__ServicePr__Appoi__5BE2A6F2">
+            <End Role="appoinment" EntitySet="appoinment" />
+            <End Role="ServiceProvider" EntitySet="ServiceProvider" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ServicePr__Servi__59FA5E80" Association="Self.FK__ServicePr__Servi__59FA5E80">
+            <End Role="Service1" EntitySet="Service1" />
+            <End Role="ServiceProvider" EntitySet="ServiceProvider" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehicle__Custome__3F466844" Association="Self.FK__Vehicle__Custome__3F466844">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Vehicle" EntitySet="Vehicle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehicle__Mechani__403A8C7D" Association="Self.FK__Vehicle__Mechani__403A8C7D">
+            <End Role="Mechanic" EntitySet="Mechanic" />
+            <End Role="Vehicle" EntitySet="Vehicle" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ServiceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="appoinment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="Customercontact" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="ServiceId" Type="Int32" />
+          <Property Name="VehicleId" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="MechanicId" Type="Int32" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__appoinmen__Custo__4E88ABD4" FromRole="appoinment" ToRole="Customer" />
+          <NavigationProperty Name="Mechanic" Relationship="Self.FK__appoinmen__Mecha__6E01572D" FromRole="appoinment" ToRole="Mechanic" />
+          <NavigationProperty Name="Service1" Relationship="Self.FK__appoinmen__Servi__5DCAEF64" FromRole="appoinment" ToRole="Service1" />
+          <NavigationProperty Name="Vehicle" Relationship="Self.FK__appoinmen__Vehic__5FB337D6" FromRole="appoinment" ToRole="Vehicle" />
+          <NavigationProperty Name="Service_Booked" Relationship="Self.FK__Service_B__appoi__5165187F" FromRole="appoinment" ToRole="Service_Booked" />
+          <NavigationProperty Name="ServiceProviders" Relationship="Self.FK__ServicePr__Appoi__5BE2A6F2" FromRole="appoinment" ToRole="ServiceProvider" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="13" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DealerId" Type="Int32" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="appoinments" Relationship="Self.FK__appoinmen__Custo__4E88ABD4" FromRole="Customer" ToRole="appoinment" />
+          <NavigationProperty Name="Dealer" Relationship="Self.FK__Customer__Dealer__3E52440B" FromRole="Customer" ToRole="Dealer" />
+          <NavigationProperty Name="Vehicles" Relationship="Self.FK__Vehicle__Custome__3F466844" FromRole="Customer" ToRole="Vehicle" />
+        </EntityType>
+        <EntityType Name="Dealer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Dealer_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Address1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Zipcode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="EmailId" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Contact" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK__Customer__Dealer__3E52440B" FromRole="Dealer" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Mechanic">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="MechanicName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNo" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="EmailId" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="appoinments" Relationship="Self.FK__appoinmen__Mecha__6E01572D" FromRole="Mechanic" ToRole="appoinment" />
+          <NavigationProperty Name="Vehicles" Relationship="Self.FK__Vehicle__Mechani__403A8C7D" FromRole="Mechanic" ToRole="Vehicle" />
+        </EntityType>
+        <EntityType Name="Service_Booked">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="appoinmentId" Type="Int32" />
+          <Property Name="ServiceId" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="appoinment" Relationship="Self.FK__Service_B__appoi__5165187F" FromRole="Service_Booked" ToRole="appoinment" />
+          <NavigationProperty Name="Service1" Relationship="Self.FK__Service_B__Servi__5AEE82B9" FromRole="Service_Booked" ToRole="Service1" />
+        </EntityType>
+        <EntityType Name="Service1">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Time" Type="DateTime" Precision="3" />
+          <Property Name="Active" Type="Boolean" />
+          <NavigationProperty Name="appoinments" Relationship="Self.FK__appoinmen__Servi__5DCAEF64" FromRole="Service1" ToRole="appoinment" />
+          <NavigationProperty Name="Service_Booked" Relationship="Self.FK__Service_B__Servi__5AEE82B9" FromRole="Service1" ToRole="Service_Booked" />
+          <NavigationProperty Name="ServiceProviders" Relationship="Self.FK__ServicePr__Servi__59FA5E80" FromRole="Service1" ToRole="ServiceProvider" />
+        </EntityType>
+        <EntityType Name="ServiceProvider">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AppoinmentId" Type="Int32" />
+          <Property Name="ServiceId" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="appoinment" Relationship="Self.FK__ServicePr__Appoi__5BE2A6F2" FromRole="ServiceProvider" ToRole="appoinment" />
+          <NavigationProperty Name="Service1" Relationship="Self.FK__ServicePr__Servi__59FA5E80" FromRole="ServiceProvider" ToRole="Service1" />
+        </EntityType>
+        <EntityType Name="Vehicle">
+          <Key>
+            <PropertyRef Name="License_Plate" />
+          </Key>
+          <Property Name="License_Plate" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Chassis_No" Type="String" MaxLength="17" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OwerName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="MechanicId" Type="Int32" />
+          <NavigationProperty Name="appoinments" Relationship="Self.FK__appoinmen__Vehic__5FB337D6" FromRole="Vehicle" ToRole="appoinment" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__Vehicle__Custome__3F466844" FromRole="Vehicle" ToRole="Customer" />
+          <NavigationProperty Name="Mechanic" Relationship="Self.FK__Vehicle__Mechani__403A8C7D" FromRole="Vehicle" ToRole="Mechanic" />
+        </EntityType>
+        <Association Name="FK__appoinmen__Custo__4E88ABD4">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="appoinment" Type="Self.appoinment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="appoinment">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__appoinmen__Mecha__6E01572D">
+          <End Role="Mechanic" Type="Self.Mechanic" Multiplicity="0..1" />
+          <End Role="appoinment" Type="Self.appoinment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mechanic">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="appoinment">
+              <PropertyRef Name="MechanicId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__appoinmen__Servi__5DCAEF64">
+          <End Role="Service1" Type="Self.Service1" Multiplicity="0..1" />
+          <End Role="appoinment" Type="Self.appoinment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service1">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="appoinment">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__appoinmen__Vehic__5FB337D6">
+          <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="0..1" />
+          <End Role="appoinment" Type="Self.appoinment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle">
+              <PropertyRef Name="License_Plate" />
+            </Principal>
+            <Dependent Role="appoinment">
+              <PropertyRef Name="VehicleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Service_B__appoi__5165187F">
+          <End Role="appoinment" Type="Self.appoinment" Multiplicity="0..1" />
+          <End Role="Service_Booked" Type="Self.Service_Booked" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="appoinment">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Service_Booked">
+              <PropertyRef Name="appoinmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ServicePr__Appoi__5BE2A6F2">
+          <End Role="appoinment" Type="Self.appoinment" Multiplicity="0..1" />
+          <End Role="ServiceProvider" Type="Self.ServiceProvider" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="appoinment">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ServiceProvider">
+              <PropertyRef Name="AppoinmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Customer__Dealer__3E52440B">
+          <End Role="Dealer" Type="Self.Dealer" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dealer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="DealerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehicle__Custome__3F466844">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vehicle">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehicle__Mechani__403A8C7D">
+          <End Role="Mechanic" Type="Self.Mechanic" Multiplicity="0..1" />
+          <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mechanic">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vehicle">
+              <PropertyRef Name="MechanicId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Service_B__Servi__5AEE82B9">
+          <End Role="Service1" Type="Self.Service1" Multiplicity="0..1" />
+          <End Role="Service_Booked" Type="Self.Service_Booked" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service1">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Service_Booked">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ServicePr__Servi__59FA5E80">
+          <End Role="Service1" Type="Self.Service1" Multiplicity="0..1" />
+          <End Role="ServiceProvider" Type="Self.ServiceProvider" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service1">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ServiceProvider">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ServiceEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="appoinments" EntityType="Self.appoinment" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="Dealers" EntityType="Self.Dealer" />
+          <EntitySet Name="Mechanics" EntityType="Self.Mechanic" />
+          <EntitySet Name="Service_Booked" EntityType="Self.Service_Booked" />
+          <EntitySet Name="Service1" EntityType="Self.Service1" />
+          <EntitySet Name="ServiceProviders" EntityType="Self.ServiceProvider" />
+          <EntitySet Name="Vehicles" EntityType="Self.Vehicle" />
+          <AssociationSet Name="FK__appoinmen__Custo__4E88ABD4" Association="Self.FK__appoinmen__Custo__4E88ABD4">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="appoinment" EntitySet="appoinments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__appoinmen__Mecha__6E01572D" Association="Self.FK__appoinmen__Mecha__6E01572D">
+            <End Role="Mechanic" EntitySet="Mechanics" />
+            <End Role="appoinment" EntitySet="appoinments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__appoinmen__Servi__5DCAEF64" Association="Self.FK__appoinmen__Servi__5DCAEF64">
+            <End Role="Service1" EntitySet="Service1" />
+            <End Role="appoinment" EntitySet="appoinments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__appoinmen__Vehic__5FB337D6" Association="Self.FK__appoinmen__Vehic__5FB337D6">
+            <End Role="Vehicle" EntitySet="Vehicles" />
+            <End Role="appoinment" EntitySet="appoinments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Service_B__appoi__5165187F" Association="Self.FK__Service_B__appoi__5165187F">
+            <End Role="appoinment" EntitySet="appoinments" />
+            <End Role="Service_Booked" EntitySet="Service_Booked" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ServicePr__Appoi__5BE2A6F2" Association="Self.FK__ServicePr__Appoi__5BE2A6F2">
+            <End Role="appoinment" EntitySet="appoinments" />
+            <End Role="ServiceProvider" EntitySet="ServiceProviders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Customer__Dealer__3E52440B" Association="Self.FK__Customer__Dealer__3E52440B">
+            <End Role="Dealer" EntitySet="Dealers" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehicle__Custome__3F466844" Association="Self.FK__Vehicle__Custome__3F466844">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Vehicle" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehicle__Mechani__403A8C7D" Association="Self.FK__Vehicle__Mechani__403A8C7D">
+            <End Role="Mechanic" EntitySet="Mechanics" />
+            <End Role="Vehicle" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Service_B__Servi__5AEE82B9" Association="Self.FK__Service_B__Servi__5AEE82B9">
+            <End Role="Service1" EntitySet="Service1" />
+            <End Role="Service_Booked" EntitySet="Service_Booked" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ServicePr__Servi__59FA5E80" Association="Self.FK__ServicePr__Servi__59FA5E80">
+            <End Role="Service1" EntitySet="Service1" />
+            <End Role="ServiceProvider" EntitySet="ServiceProviders" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ServiceModelStoreContainer" CdmEntityContainer="ServiceEntities2">
+          <EntitySetMapping Name="appoinments">
+            <EntityTypeMapping TypeName="ServiceModel.appoinment">
+              <MappingFragment StoreEntitySet="appoinment">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="Customercontact" ColumnName="Customercontact" />
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+                <ScalarProperty Name="VehicleId" ColumnName="VehicleId" />
+                <ScalarProperty Name="MechanicId" ColumnName="MechanicId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="ServiceModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="DealerId" ColumnName="DealerId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dealers">
+            <EntityTypeMapping TypeName="ServiceModel.Dealer">
+              <MappingFragment StoreEntitySet="Dealer">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Dealer_Name" ColumnName="Dealer Name" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mechanics">
+            <EntityTypeMapping TypeName="ServiceModel.Mechanic">
+              <MappingFragment StoreEntitySet="Mechanic">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MechanicName" ColumnName="MechanicName" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Service_Booked">
+            <EntityTypeMapping TypeName="ServiceModel.Service_Booked">
+              <MappingFragment StoreEntitySet="Service_Booked">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="appoinmentId" ColumnName="appoinmentId" />
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Service1">
+            <EntityTypeMapping TypeName="ServiceModel.Service1">
+              <MappingFragment StoreEntitySet="Service1">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceProviders">
+            <EntityTypeMapping TypeName="ServiceModel.ServiceProvider">
+              <MappingFragment StoreEntitySet="ServiceProvider">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="AppoinmentId" ColumnName="AppoinmentId" />
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vehicles">
+            <EntityTypeMapping TypeName="ServiceModel.Vehicle">
+              <MappingFragment StoreEntitySet="Vehicle">
+                <ScalarProperty Name="License_Plate" ColumnName="License Plate" />
+                <ScalarProperty Name="Chassis_No" ColumnName="Chassis No" />
+                <ScalarProperty Name="OwerName" ColumnName="OwerName" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="MechanicId" ColumnName="MechanicId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
